@@ -1,0 +1,9 @@
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.csv
+dvc_storage/
+.dvc/tmp/
+.DS_Store
+Thumbs.db
