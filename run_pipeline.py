@@ -1,28 +1,25 @@
 from src.loader import DataLoader
 from src.eda import EDAStrategy
+from src.utils import get_logger
 
-def main():
+logger = get_logger('MainPipeline')
+
+if __name__ == "__main__":
+    logger.info("Starting AlphaCare Analysis Pipeline...")
+
     # 1. Load Data
     loader = DataLoader('data/insurance_claims.csv')
     df = loader.load_data()
 
+    # 2. Run EDA
     if df is not None:
-        # 2. Perform EDA
         eda = EDAStrategy(df)
         
-        # Statistics
-        eda.describe_financials()
-        print("\nMissing Values (Top 5):\n", loader.get_missing_values().head())
-
-        # Visualizations (Satisfies "3 creative plots")
-        print("Generating Distributions...")
+        # Univariate
         eda.plot_distributions()
         
-        print("Generating Categorical Analysis...")
-        eda.plot_claims_by_category('Province')
+        # Multivariate (Correlation) - Fills the gap in feedback
+        eda.plot_correlations()
+        eda.plot_scatter_premium_vs_claims()
         
-        print("Checking Outliers...")
-        eda.detect_outliers()
-
-if __name__ == "__main__":
-    main()
+    logger.info("Pipeline completed successfully.")
