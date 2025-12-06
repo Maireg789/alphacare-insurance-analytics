@@ -20,3 +20,23 @@ To analyze historical insurance claim data to optimize marketing strategies and 
 1.  `pip install -r requirements.txt` (Create this file if needed)
 2.  `dvc pull` (Retrieves the data)
 3.  `python run_pipeline.py`
+## 🚀 How to Run the Project
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Maireg789/alphacare-insurance-analytics.git
+   cd alphacare-insurance-analytics
+   ## 📊 Analysis Results
+Per the feedback, outlier analysis has been performed.
+
+### Outlier Detection (Box Plots)
+The following plots identify high-risk outliers in Premiums and Claims:
+
+![Premium Box Plot](results/figures/boxplot_premium.png)
+![Claims Box Plot](results/figures/boxplot_claims.png)
+
+> **To reproduce these figures:**  
+> Run the visualization script:
+> ```bash
+> python src/generate_plots.py
+> ```
